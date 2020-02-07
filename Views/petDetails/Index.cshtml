@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<gb538515Mis4200.Models.petDetail>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pet Information";
 }
 
-<h2>Index</h2>
+<h2>Pet Information</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,25 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Pet.animalType)
+            @Html.DisplayNameFor(model => model.Pet.petName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Visit.description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.numberVisits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.accumulatedBill)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.medicineOrdered)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.priceTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.weight)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ownerEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ownerAddress)
         </th>
         <th></th>
     </tr>
@@ -38,30 +35,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Pet.animalType)
+            @Html.DisplayFor(modelItem => item.Pet.petName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Visit.description)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.numberVisits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.accumulatedBill)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.medicineOrdered)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.priceTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.weight)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ownerEmail)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ownerAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.petDetailID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.petDetailID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.petDetailID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.petdetailID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.petdetailID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.petdetailID })
         </td>
     </tr>
 }

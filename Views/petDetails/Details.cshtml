@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Pet.animalType)
+            @Html.DisplayNameFor(model => model.Pet.petName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pet.animalType)
+            @Html.DisplayFor(model => model.Pet.petName)
         </dd>
 
         <dt>
@@ -27,27 +27,27 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.numberVisits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberVisits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accumulatedBill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accumulatedBill)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.medicineOrdered)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.medicineOrdered)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.priceTotal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.priceTotal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.weight)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.weight)
         </dd>
 
         <dt>
@@ -58,17 +58,9 @@
             @Html.DisplayFor(model => model.ownerEmail)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ownerAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ownerAddress)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.petDetailID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.petdetailID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

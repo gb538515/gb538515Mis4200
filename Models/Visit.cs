@@ -10,6 +10,12 @@ namespace gb538515Mis4200.Models
         public int visitID { get; set; }
         public string description { get; set; }
         public decimal visitCost { get; set; }
+
+        public string pawExamination { get; set; }
+
+        public string furHealth { get; set; }
+
+        public string heartRate { get; set; }
         // add any other fields as appropriate
         //Product is on the "one" side of a one-to-many relationship with OrderDetail
         //we indicate that with an ICollection
@@ -19,7 +25,7 @@ namespace gb538515Mis4200.Models
     {
         public int petdetailID { get; set; }
         public int numberVisits { get; set; }
-        public decimal visitPrice { get; set; }
+        public decimal accumulatedBill { get; set; }
 
         public string medicineOrdered { get; set; }
 

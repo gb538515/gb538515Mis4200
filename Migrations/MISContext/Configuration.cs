@@ -9,6 +9,7 @@ namespace gb538515Mis4200.Migrations.MISContext
     {
         public Configuration()
         {
+            AutomaticMigrationDataLossAllowed = true;
             AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\MISContext";
         }

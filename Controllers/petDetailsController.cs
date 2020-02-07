@@ -40,7 +40,7 @@ namespace gb538515Mis4200.Controllers
         // GET: petDetails/Create
         public ActionResult Create()
         {
-            ViewBag.petID = new SelectList(db.Pets, "petID", "animalType");
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petName");
             ViewBag.visitID = new SelectList(db.Visits, "visitID", "description");
             return View();
         }
@@ -50,7 +50,7 @@ namespace gb538515Mis4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "petDetailID,medicineOrdered,priceTotal,weight,ownerEmail,ownerAddress,petID,visitID")] petDetail petDetail)
+        public ActionResult Create([Bind(Include = "petdetailID,numberVisits,accumulatedBill,medicineOrdered,ownerEmail,petID,visitID")] petDetail petDetail)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace gb538515Mis4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.petID = new SelectList(db.Pets, "petID", "animalType", petDetail.petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petName", petDetail.petID);
             ViewBag.visitID = new SelectList(db.Visits, "visitID", "description", petDetail.visitID);
             return View(petDetail);
         }
@@ -76,7 +76,7 @@ namespace gb538515Mis4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.petID = new SelectList(db.Pets, "petID", "animalType", petDetail.petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petName", petDetail.petID);
             ViewBag.visitID = new SelectList(db.Visits, "visitID", "description", petDetail.visitID);
             return View(petDetail);
         }
@@ -86,7 +86,7 @@ namespace gb538515Mis4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "petDetailID,medicineOrdered,priceTotal,weight,ownerEmail,ownerAddress,petID,visitID")] petDetail petDetail)
+        public ActionResult Edit([Bind(Include = "petdetailID,numberVisits,accumulatedBill,medicineOrdered,ownerEmail,petID,visitID")] petDetail petDetail)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace gb538515Mis4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.petID = new SelectList(db.Pets, "petID", "animalType", petDetail.petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petName", petDetail.petID);
             ViewBag.visitID = new SelectList(db.Visits, "visitID", "description", petDetail.visitID);
             return View(petDetail);
         }

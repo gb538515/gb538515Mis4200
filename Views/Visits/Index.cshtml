@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<gb538515Mis4200.Models.Visit>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Visit Information";
 }
 
-<h2>Index</h2>
+<h2>Visit Information</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,6 +17,15 @@
         <th>
             @Html.DisplayNameFor(model => model.visitCost)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pawExamination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.furHealth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.heartRate)
+        </th>
         <th></th>
     </tr>
 
@@ -27,6 +36,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.visitCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pawExamination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.furHealth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.heartRate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.visitID }) |

@@ -47,7 +47,7 @@ namespace gb538515Mis4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "visitID,description,visitCost")] Visit visit)
+        public ActionResult Create([Bind(Include = "visitID,description,visitCost,pawExamination,furHealth,heartRate")] Visit visit)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace gb538515Mis4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "visitID,description,visitCost")] Visit visit)
+        public ActionResult Edit([Bind(Include = "visitID,description,visitCost,pawExamination,furHealth,heartRate")] Visit visit)
         {
             if (ModelState.IsValid)
             {
