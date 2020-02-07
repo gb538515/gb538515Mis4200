@@ -5,15 +5,15 @@ using System.Web;
 
 namespace gb538515Mis4200.Models
 {
-    public class Customer
+    public class Vet
     {
-        public int customerID { get; set; }
-        public string firstName { get; set; }
+        public int vetID { get; set; }
         public string lastName { get; set; }
+        public string animalType { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
-        public DateTime customerSince { get; set; }
+        public DateTime vetSince { get; set; }
 
-        public ICollection<Order> Order { get; set; }
+        public ICollection<Pet> Pet { get; set; }
     }
 }

@@ -11,107 +11,112 @@ using gb538515Mis4200.Models;
 
 namespace gb538515Mis4200.Controllers
 {
-    public class ProductsController : Controller
+    public class PetsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Products
+        // GET: Pets
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var pets = db.Pets.Include(p => p.Vet);
+            return View(pets.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Pets/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
-            if (products == null)
+            Pet pet = db.Pets.Find(id);
+            if (pet == null)
             {
                 return HttpNotFound();
             }
-            return View(products);
+            return View(pet);
         }
 
-        // GET: Products/Create
+        // GET: Pets/Create
         public ActionResult Create()
         {
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "lastName");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Pets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productID,supplierID,description,unitCost")] Products products)
+        public ActionResult Create([Bind(Include = "petID,petName,animalType,healthIssue,ownerPhone,visitDate,vetID")] Pet pet)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(products);
+                db.Pets.Add(pet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(products);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "lastName", pet.vetID);
+            return View(pet);
         }
 
-        // GET: Products/Edit/5
+        // GET: Pets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
-            if (products == null)
+            Pet pet = db.Pets.Find(id);
+            if (pet == null)
             {
                 return HttpNotFound();
             }
-            return View(products);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "lastName", pet.vetID);
+            return View(pet);
         }
 
-        // POST: Products/Edit/5
+        // POST: Pets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productID,supplierID,description,unitCost")] Products products)
+        public ActionResult Edit([Bind(Include = "petID,petName,animalType,healthIssue,ownerPhone,visitDate,vetID")] Pet pet)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(products).State = EntityState.Modified;
+                db.Entry(pet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(products);
+            ViewBag.vetID = new SelectList(db.Vets, "vetID", "lastName", pet.vetID);
+            return View(pet);
         }
 
-        // GET: Products/Delete/5
+        // GET: Pets/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = db.Products.Find(id);
-            if (products == null)
+            Pet pet = db.Pets.Find(id);
+            if (pet == null)
             {
                 return HttpNotFound();
             }
-            return View(products);
+            return View(pet);
         }
 
-        // POST: Products/Delete/5
+        // POST: Pets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Products products = db.Products.Find(id);
-            db.Products.Remove(products);
+            Pet pet = db.Pets.Find(id);
+            db.Pets.Remove(pet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<gb538515Mis4200.Models.Customer>
+﻿@model IEnumerable<gb538515Mis4200.Models.Vet>
 
 @{
-    ViewBag.Title = "Customers";
+    ViewBag.Title = "Index";
 }
 
-<h2>Customers</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            @Html.DisplayNameFor(model => model.lastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+            @Html.DisplayNameFor(model => model.animalType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.email)
@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.phone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.customerSince)
+            @Html.DisplayNameFor(model => model.vetSince)
         </th>
         <th></th>
     </tr>
@@ -32,10 +32,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.firstName)
+            @Html.DisplayFor(modelItem => item.lastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.lastName)
+            @Html.DisplayFor(modelItem => item.animalType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.email)
@@ -44,12 +44,12 @@
             @Html.DisplayFor(modelItem => item.phone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.customerSince)
+            @Html.DisplayFor(modelItem => item.vetSince)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.customerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.customerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.customerID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.vetID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.vetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.vetID })
         </td>
     </tr>
 }

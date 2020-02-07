@@ -1,0 +1,69 @@
+﻿@model IEnumerable<gb538515Mis4200.Models.petDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pet.animalType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visit.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicineOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.priceTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ownerAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet.animalType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visit.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medicineOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.priceTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ownerAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.petDetailID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.petDetailID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.petDetailID })
+        </td>
+    </tr>
+}
+
+</table>

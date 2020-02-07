@@ -11,112 +11,107 @@ using gb538515Mis4200.Models;
 
 namespace gb538515Mis4200.Controllers
 {
-    public class OrdersController : Controller
+    public class VisitsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Orders
+        // GET: Visits
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer);
-            return View(orders.ToList());
+            return View(db.Visits.ToList());
         }
 
-        // GET: Orders/Details/5
+        // GET: Visits/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Visit visit = db.Visits.Find(id);
+            if (visit == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(visit);
         }
 
-        // GET: Orders/Create
+        // GET: Visits/Create
         public ActionResult Create()
         {
-            ViewBag.customerID = new SelectList(db.Customers, "customerID", "firstName");
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Visits/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "orderID,description,orderDate,customerID")] Order order)
+        public ActionResult Create([Bind(Include = "visitID,description,visitCost")] Visit visit)
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
+                db.Visits.Add(visit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customerID = new SelectList(db.Customers, "customerID", "firstName", order.customerID);
-            return View(order);
+            return View(visit);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Visits/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Visit visit = db.Visits.Find(id);
+            if (visit == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.customerID = new SelectList(db.Customers, "customerID", "firstName", order.customerID);
-            return View(order);
+            return View(visit);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Visits/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "orderID,description,orderDate,customerID")] Order order)
+        public ActionResult Edit([Bind(Include = "visitID,description,visitCost")] Visit visit)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(visit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.customerID = new SelectList(db.Customers, "customerID", "firstName", order.customerID);
-            return View(order);
+            return View(visit);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Visits/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Visit visit = db.Visits.Find(id);
+            if (visit == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(visit);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Visits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
+            Visit visit = db.Visits.Find(id);
+            db.Visits.Remove(visit);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

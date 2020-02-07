@@ -11,107 +11,107 @@ using gb538515Mis4200.Models;
 
 namespace gb538515Mis4200.Controllers
 {
-    public class CustomersController : Controller
+    public class VetsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Customers
+        // GET: Vets
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Vets.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: Vets/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Vet vet = db.Vets.Find(id);
+            if (vet == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(vet);
         }
 
-        // GET: Customers/Create
+        // GET: Vets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Vets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "customerID,firstName,lastName,email,phone,customerSince")] Customer customer)
+        public ActionResult Create([Bind(Include = "vetID,lastName,animalType,email,phone,vetSince")] Vet vet)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.Vets.Add(vet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(vet);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Vets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Vet vet = db.Vets.Find(id);
+            if (vet == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(vet);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Vets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "customerID,firstName,lastName,email,phone,customerSince")] Customer customer)
+        public ActionResult Edit([Bind(Include = "vetID,lastName,animalType,email,phone,vetSince")] Vet vet)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(vet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(vet);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Vets/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Vet vet = db.Vets.Find(id);
+            if (vet == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(vet);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Vets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            Vet vet = db.Vets.Find(id);
+            db.Vets.Remove(vet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

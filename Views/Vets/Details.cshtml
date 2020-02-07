@@ -1,4 +1,4 @@
-﻿@model gb538515Mis4200.Models.Customer
+﻿@model gb538515Mis4200.Models.Vet
 
 @{
     ViewBag.Title = "Details";
@@ -7,23 +7,23 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Customer</h4>
+    <h4>Vet</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.firstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.firstName)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.lastName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.animalType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.animalType)
         </dd>
 
         <dt>
@@ -43,16 +43,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.customerSince)
+            @Html.DisplayNameFor(model => model.vetSince)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.customerSince)
+            @Html.DisplayFor(model => model.vetSince)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.customerID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vetID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

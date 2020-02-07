@@ -19,10 +19,10 @@ gb538515Mis4200.Migrations.MISContext.Configuration>("DefaultConnection"));
         // Include each object here. The value inside <> is the name of the class,
         // the value outside should generally be the plural of the class name
         // and is the name used to reference the entity in code
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Products> Products { get; set; }
-        public DbSet<orderDetail> OrderDetails { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Vet> Vets { get; set; }
+        public DbSet<Visit> Visits { get; set; }
+        public DbSet<petDetail> petDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
