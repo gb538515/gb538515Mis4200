@@ -13,10 +13,15 @@ namespace gb538515Mis4200.Models
         public int petID { get; set; }
 
         public string petName { get; set; }
+        [Display (Name = "Name of your pet")]
         public string animalType { get; set; }
+        [Display(Name = "What type of animal is your pet?")]
         public string healthIssue { get; set; }
+        [Display(Name = "Why are you visiting us today?")]
         public string ownerPhone { get; set; }
+        [Display(Name = "Owner phone number")]
         public DateTime visitDate { get; set; }
+        [Display(Name = "Date of your appointment")]
         // add any other fields as appropriate
         //Order is on the "one" side of a one-to-many relationship with OrderDetail
         //and we indicate that with an ICollection
